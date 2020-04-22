@@ -9,6 +9,29 @@ import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchResults: [],
+      playlistName: "Corona Loss",
+      playlistTracks: [{
+        name: "joshshmo",
+        artist: "adslkfjs",
+        album: "talking to much"
+      },{
+        name: "seth",
+        artist: "lalala",
+        album: "talking to much"
+      }]
+    };
+  }
+
+  addTrack(track) {
+    if (this.state.playlistTracks.find(savedTrack => savedTrack.id === track.id)) {
+      return;
+    }
+
+  }
   render() {
       return (
         <div>
@@ -19,8 +42,8 @@ class App extends React.Component {
               <div className="App-playlist">
               {/* <!-- Add a SearchResults component -->
               <!-- Add a Playlist component --> */}
-              <SearchResults />
-              <Playlist />
+              <SearchResults searchResults={this.state.searchResults} />
+              <Playlist playListName={this.state.playlistName} playListTracks={this.state.playlistTracks} />
             </div>
           </div>
         </div>
